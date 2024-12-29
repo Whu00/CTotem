@@ -20,14 +20,11 @@ public class CtotemClient implements ClientModInitializer {
     public void onInitializeClient() {
         log.info("onInitializeClient() works");
 
-        // Регистрируем обработчик на каждый тик клиента
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player != null) {
-                // Если игрок существует, сбрасываем флаг сброса
                 stateReset = false;
                 handleHealthCheck(client);
             } else if (!stateReset) {
-                // Выполняем сброс состояния только один раз
                 resetState();
             }
         });
@@ -37,7 +34,6 @@ public class CtotemClient implements ClientModInitializer {
         PlayerEntity player = client.player;
         float health = player.getHealth();
 
-        // Пропускаем первую проверку после входа
         if (!initialized) {
             lastHealth = health;
             initialized = true;
@@ -45,11 +41,9 @@ public class CtotemClient implements ClientModInitializer {
             return;
         }
 
-        // Проверяем изменения здоровья
         if (health != lastHealth) {
             log.info("Health changed: " + health);
 
-            // Если здоровье увеличилось или уменьшилось, проверяем условия
             if (health >= 2.0f && !n) {
                 n = true;
                 log.info("Количество жизней игрока было больше 2");
@@ -58,10 +52,10 @@ public class CtotemClient implements ClientModInitializer {
             if (n && health < lastHealth && health <= 2.0f) {
                 client.player.networkHandler.sendChatCommand("lobby");
                 log.info("Отправлена команда LOBBY");
-                n = false; // Сбрасываем флаг после выполнения команды
+                n = false;
             }
 
-            lastHealth = health; // Обновляем последнее значение здоровья
+            lastHealth = health;
         }
     }
 
@@ -70,6 +64,6 @@ public class CtotemClient implements ClientModInitializer {
         n = false;
         initialized = false;
         lastHealth = 0;
-        stateReset = true; // Помечаем, что сброс выполнен
+        stateReset = true;
     }
 }
