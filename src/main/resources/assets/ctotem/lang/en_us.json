@@ -6,7 +6,7 @@
   "ctotem.group.settings": "Settings",
   "ctotem.group.settings.desc": "Mod settings",
   "ctotem.option.health": "Health threshold",
-  "ctotem.option.health.desc": "The health threshold below which the command will be sent.",
+  "ctotem.option.health.desc": "The HP threshold below which the command will be sent.",
   "ctotem.option.command": "Command",
-  "ctotem.option.command.desc": "The command to send in chat when health is low"
+  "ctotem.option.command.desc": "The command to send in chat when HP is low."
 }

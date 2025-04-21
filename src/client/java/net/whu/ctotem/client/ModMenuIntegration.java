@@ -46,7 +46,7 @@ public class ModMenuIntegration implements ModMenuApi {
                                             newVal -> CtotemConfig.HANDLER.instance().lifeLine = newVal
                                     )
                                     .controller(opt -> IntegerSliderControllerBuilder.create(opt)
-                                            .range(0, 20)
+                                            .range(1, 20)
                                             .step(1))
                                     .build())
                                 .option(Option.<String>createBuilder()
