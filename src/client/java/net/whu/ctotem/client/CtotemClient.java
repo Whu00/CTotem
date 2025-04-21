@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 public class CtotemClient implements ClientModInitializer {
 
     public static boolean activate = false;
+    public static int lifeLine = 2;
+    public static String lifeCommand = "lobby";
     private static final Logger log = LoggerFactory.getLogger(CtotemClient.class);
     private boolean n = false;
     private boolean initialized = false;
@@ -46,13 +48,13 @@ public class CtotemClient implements ClientModInitializer {
             if (health != lastHealth) {
                 log.info("Health changed: " + health);
 
-                if (health >= 2.0f && !n) {
+                if (health >= (float) lifeLine && !n) {
                     n = true;
                     log.info("Количество жизней игрока было больше 2");
                 }
 
-                if (n && health < lastHealth && health <= 2.0f) {
-                    client.player.networkHandler.sendChatCommand("lobby");
+                if (n && health < lastHealth && health <= (float) lifeLine) {
+                    client.player.networkHandler.sendChatCommand(lifeCommand);
                     log.info("Отправлена команда LOBBY");
                     n = false;
                 }
