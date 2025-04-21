@@ -13,6 +13,9 @@
     "client": [
       "net.whu.ctotem.client.CtotemClient"
     ],
+    "modmenu": [
+      "net.whu.ctotem.client.ModMenuIntegration"
+    ],
     "main": [
       "net.whu.ctotem.Ctotem"
     ]
@@ -28,6 +31,8 @@
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
     "minecraft": "${minecraft_version}",
-    "modmenu": "*"
+    "modmenu": "*",
+    "yet_another_config_lib_v3": "3.6.1+1.21.2-fabric"
+
   }
 }

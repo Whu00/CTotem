@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class CtotemClient implements ClientModInitializer {
 
+    public static boolean activate = false;
     private static final Logger log = LoggerFactory.getLogger(CtotemClient.class);
     private boolean n = false;
     private boolean initialized = false;
@@ -31,31 +32,33 @@ public class CtotemClient implements ClientModInitializer {
     }
 
     private void handleHealthCheck(MinecraftClient client) {
-        PlayerEntity player = client.player;
-        float health = player.getHealth();
+        if (activate) {
+            PlayerEntity player = client.player;
+            float health = player.getHealth();
 
-        if (!initialized) {
-            lastHealth = health;
-            initialized = true;
-            log.info("Initial health recorded: " + health);
-            return;
-        }
-
-        if (health != lastHealth) {
-            log.info("Health changed: " + health);
-
-            if (health >= 2.0f && !n) {
-                n = true;
-                log.info("Количество жизней игрока было больше 2");
+            if (!initialized) {
+                lastHealth = health;
+                initialized = true;
+                log.info("Initial health recorded: " + health);
+                return;
             }
 
-            if (n && health < lastHealth && health <= 2.0f) {
-                client.player.networkHandler.sendChatCommand("lobby");
-                log.info("Отправлена команда LOBBY");
-                n = false;
-            }
+            if (health != lastHealth) {
+                log.info("Health changed: " + health);
 
-            lastHealth = health;
+                if (health >= 2.0f && !n) {
+                    n = true;
+                    log.info("Количество жизней игрока было больше 2");
+                }
+
+                if (n && health < lastHealth && health <= 2.0f) {
+                    client.player.networkHandler.sendChatCommand("lobby");
+                    log.info("Отправлена команда LOBBY");
+                    n = false;
+                }
+
+                lastHealth = health;
+            }
         }
     }
 
