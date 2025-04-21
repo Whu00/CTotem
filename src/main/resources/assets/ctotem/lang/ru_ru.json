@@ -1,0 +1,12 @@
+{
+  "ctotem.group.activate": "Активация",
+  "ctotem.group.activate.desc": "Активация мода",
+  "ctotem.option.activate": "Включить",
+  "ctotem.option.activate.desc": "Мод будет работать",
+  "ctotem.group.settings": "Настройки",
+  "ctotem.group.settings.desc": "Настройки модда",
+  "ctotem.option.health" : "Количество жизней",
+  "ctotem.option.health.desc" : "Количество жизней при котором будет отправляться команда.",
+  "ctotem.option.command": "Команда",
+  "ctotem.option.command.desc": "Какую команду отправлять в чат при маленьком количестве жизней"
+}

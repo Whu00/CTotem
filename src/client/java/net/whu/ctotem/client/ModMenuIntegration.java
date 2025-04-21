@@ -19,48 +19,49 @@ public class ModMenuIntegration implements ModMenuApi {
                 .title(Text.literal("Ctotem Config"))
                 .category(ConfigCategory.createBuilder()
                         .name(Text.literal("Ctotem"))
-                        .tooltip(Text.literal("Category tooltip"))
+                        .tooltip(Text.literal("Ctotem"))
                         .group(OptionGroup.createBuilder()
-                                .name(Text.literal("Активация"))
-                                .description(OptionDescription.of(Text.literal("Активация мода")))
+                                .name(Text.translatable("ctotem.group.activate"))
+                                .description(OptionDescription.of(Text.translatable("ctotem.group.activate.desc")))
                                 .option(Option.<Boolean>createBuilder()
-                                        .name(Text.literal("Включить"))
-                                        .description(OptionDescription.of(Text.literal("Мод будет работать.")))
+                                        .name(Text.translatable("ctotem.option.activate"))
+                                        .description(OptionDescription.of(Text.translatable("ctotem.option.activate.desc")))
                                         .binding(
                                                 true,
-                                                () -> activate,
-                                                newVal -> activate = newVal
+                                                () -> CtotemConfig.HANDLER.instance().activate,
+                                                newVal -> CtotemConfig.HANDLER.instance().activate = newVal
                                         )
                                         .controller(TickBoxControllerBuilder::create)
                                         .build())
                                 .build())
                         .group(OptionGroup.createBuilder()
-                                .name(Text.literal("Настройки"))
-                                .description(OptionDescription.of(Text.literal("Настройки мода")))
+                                .name(Text.translatable("ctotem.group.settings"))
+                                .description(OptionDescription.of(Text.translatable("ctotem.group.settings.desc")))
                                 .option(Option.<Integer>createBuilder()
-                                    .name(Text.literal("Количество жизней"))
-                                    .description(OptionDescription.of(Text.literal("Количество жизней при котором будет отправляться команда")))
+                                    .name(Text.translatable("ctotem.option.health"))
+                                    .description(OptionDescription.of(Text.translatable("ctotem.option.health.desc")))
                                     .binding(
                                             2,
-                                            () -> lifeLine,
-                                            newVal -> lifeLine = newVal
+                                            () -> CtotemConfig.HANDLER.instance().lifeLine,
+                                            newVal -> CtotemConfig.HANDLER.instance().lifeLine = newVal
                                     )
                                     .controller(opt -> IntegerSliderControllerBuilder.create(opt)
                                             .range(0, 20)
                                             .step(1))
                                     .build())
                                 .option(Option.<String>createBuilder()
-                                        .name(Text.literal("Команда"))
-                                        .description(OptionDescription.of(Text.literal("Какую команду отправлять в чат при маленьком количестве жизней")))
+                                        .name(Text.translatable("ctotem.option.command"))
+                                        .description(OptionDescription.of(Text.translatable("ctotem.option.command.desc")))
                                         .binding(
                                                 "lobby",
-                                                () -> lifeCommand,
-                                                newVal -> lifeCommand = newVal
+                                                () -> CtotemConfig.HANDLER.instance().lifeCommand,
+                                                newVal -> CtotemConfig.HANDLER.instance().lifeCommand = newVal
                                         )
                                         .controller(StringControllerBuilder::create)
                                         .build())
                                 .build())
                         .build())
+                .save(CtotemConfig.HANDLER::save)
                 .build()
                 .generateScreen(parentScreen);
     }

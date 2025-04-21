@@ -9,10 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class CtotemClient implements ClientModInitializer {
-
-    public static boolean activate = false;
-    public static int lifeLine = 2;
-    public static String lifeCommand = "lobby";
     private static final Logger log = LoggerFactory.getLogger(CtotemClient.class);
     private boolean n = false;
     private boolean initialized = false;
@@ -21,7 +17,8 @@ public class CtotemClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        log.info("onInitializeClient() works");
+
+        CtotemConfig.HANDLER.load();
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player != null) {
@@ -34,6 +31,10 @@ public class CtotemClient implements ClientModInitializer {
     }
 
     private void handleHealthCheck(MinecraftClient client) {
+        boolean activate = CtotemConfig.HANDLER.instance().activate;
+        float lifeLine = (float) CtotemConfig.HANDLER.instance().lifeLine;
+        String lifeCommand = CtotemConfig.HANDLER.instance().lifeCommand;
+
         if (activate) {
             PlayerEntity player = client.player;
             float health = player.getHealth();
@@ -46,16 +47,13 @@ public class CtotemClient implements ClientModInitializer {
             }
 
             if (health != lastHealth) {
-                log.info("Health changed: " + health);
 
-                if (health >= (float) lifeLine && !n) {
+                if (health >= lifeLine && !n) {
                     n = true;
-                    log.info("Количество жизней игрока было больше 2");
                 }
 
-                if (n && health < lastHealth && health <= (float) lifeLine) {
+                if (n && health < lastHealth && health <= lifeLine) {
                     client.player.networkHandler.sendChatCommand(lifeCommand);
-                    log.info("Отправлена команда LOBBY");
                     n = false;
                 }
 
