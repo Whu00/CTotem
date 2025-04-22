@@ -21,6 +21,9 @@ public class CtotemConfig {
     public boolean activate = true;
 
     @SerialEntry
+    public boolean exit = true;
+
+    @SerialEntry
     public int lifeLine = 2;
 
     @SerialEntry

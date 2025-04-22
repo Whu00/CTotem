@@ -1,12 +1,21 @@
 {
   "ctotem.group.activate": "Активация",
-  "ctotem.group.activate.desc": "Активация мода",
+  "ctotem.group.activate.desc": "Активация мода.",
   "ctotem.option.activate": "Включить",
-  "ctotem.option.activate.desc": "Мод будет работать",
+  "ctotem.option.activate.desc": "Мод будет работать.",
   "ctotem.group.settings": "Настройки",
-  "ctotem.group.settings.desc": "Настройки мода",
+  "ctotem.group.settings.desc": "Настройки мода.",
   "ctotem.option.health" : "Количество хп (здоровья)",
   "ctotem.option.health.desc" : "Количество хп (здоровья) при котором будет отправляться команда.",
   "ctotem.option.command": "Команда",
-  "ctotem.option.command.desc": "Какую команду отправлять в чат при маленьком количестве хп (здоровья)."
+  "ctotem.option.command.desc": "Какую команду отправлять в чат при маленьком количестве хп (здоровья).",
+  "ctotem.option.exit": "Тип тотема",
+  "ctotem.option.exit.desc": "Вы будете либо выходить из мира, либо отправлять команду.",
+  "ctotem.controller.exit.true": "Команда",
+  "ctotem.controller.exit.false": "Выход из мира",
+  "ctotem.disconnect.title": "Отключено",
+  "ctotem.disconnect": "У вас мало здоровья!",
+  "ctotem.command.toggle.enabled": "CTotem включён",
+  "ctotem.command.toggle.disabled": "CTotem выключен"
+
 }

@@ -8,5 +8,13 @@
   "ctotem.option.health": "Health threshold",
   "ctotem.option.health.desc": "The HP threshold below which the command will be sent.",
   "ctotem.option.command": "Command",
-  "ctotem.option.command.desc": "The command to send in chat when HP is low."
+  "ctotem.option.command.desc": "The command to send in chat when HP is low.",
+  "ctotem.option.exit": "Totem behavior",
+  "ctotem.option.exit.desc": "Choose whether to leave the world or run a command.",
+  "ctotem.controller.exit.true": "Command",
+  "ctotem.controller.exit.false": "Leave world",
+  "ctotem.disconnect.title": "Disconnected",
+  "ctotem.disconnect": "Low health!",
+  "ctotem.command.toggle.enabled": "CTotem is now enabled",
+  "ctotem.command.toggle.disabled": "CTotem is now disabled"
 }

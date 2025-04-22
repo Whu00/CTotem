@@ -3,6 +3,7 @@ package net.whu.ctotem.client;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import dev.isxander.yacl3.api.*;
+import dev.isxander.yacl3.api.controller.BooleanControllerBuilder;
 import dev.isxander.yacl3.api.controller.IntegerSliderControllerBuilder;
 import dev.isxander.yacl3.api.controller.StringControllerBuilder;
 import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
@@ -37,6 +38,18 @@ public class ModMenuIntegration implements ModMenuApi {
                         .group(OptionGroup.createBuilder()
                                 .name(Text.translatable("ctotem.group.settings"))
                                 .description(OptionDescription.of(Text.translatable("ctotem.group.settings.desc")))
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(Text.translatable("ctotem.option.exit"))
+                                        .description(OptionDescription.of(Text.translatable("ctotem.option.exit.desc")))
+                                        .binding(
+                                                true,
+                                                () -> CtotemConfig.HANDLER.instance().exit,
+                                                newVal -> CtotemConfig.HANDLER.instance().exit = newVal
+                                        )
+                                        .controller(opt -> BooleanControllerBuilder.create(opt)
+                                                .formatValue(val -> val ? Text.translatable("ctotem.controller.exit.true") : Text.translatable("ctotem.controller.exit.false"))
+                                                .coloured(false))
+                                        .build())
                                 .option(Option.<Integer>createBuilder()
                                     .name(Text.translatable("ctotem.option.health"))
                                     .description(OptionDescription.of(Text.translatable("ctotem.option.health.desc")))

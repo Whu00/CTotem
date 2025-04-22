@@ -3,9 +3,13 @@
   "id": "ctotem",
   "version": "${version}",
   "name": "CTotem",
-  "description": "If your health reaches a certain threshold, a command will automatically be sent to the chat.",
+  "description": "Mod that executes a command or exits the game at low health levels.",
   "authors": ["Whu00", "BorzaXoma"],
-  "contact": {},
+  "contact": {
+    "homepage": "https://modrinth.com/mod/ctotem",
+    "sources": "https://github.com/Whu00/CTotem",
+    "issues": "https://github.com/Whu00/CTotem/issues"
+  },
   "license": "Apache-2.0",
   "icon": "assets/ctotem/icon.png",
   "environment": "client",
