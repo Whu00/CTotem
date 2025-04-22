@@ -1,6 +1,6 @@
 ![Static Badge](https://img.shields.io/badge/Environment-Client-purple)
-![Modrinth Downloads](https://img.shields.io/modrinth/dt/ctotem?logo=modrinth&logoColor=%2300AF5C&color=00AF5C)
-![CurseForge Downloads](https://img.shields.io/curseforge/dt/1249211?logo=curseforge&logoColor=F16436&color=F16436)
+[![Modrinth Downloads](https://img.shields.io/modrinth/dt/ctotem?logo=modrinth&logoColor=%2300AF5C&color=00AF5C)](https://modrinth.com/mod/ctotem)
+[![CurseForge Downloads](https://img.shields.io/curseforge/dt/1249211?logo=curseforge&logoColor=F16436&color=F16436)](https://www.curseforge.com/minecraft/mc-mods/ctotem)
 
 **CTotem** is a mod that helps ease the early days of survival.
 
